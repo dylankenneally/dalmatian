@@ -21,6 +21,7 @@ s3_prefix = "dalmatian"
 region = "us-east-2"
 disable_rollback = true
 image_repositories = []
+fail_on_empty_changeset = false
 
 [default.package.parameters]
 resolve_s3 = true
