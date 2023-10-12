@@ -11,7 +11,7 @@ This project includes:
    1. AWS IAM Roles
    1. AWS S3 Buckets
    1. AWS CloudFormation (automated via SAM)
-1. [pending] Automated deployment via GitHub Actions
+1. Automated deployment via GitHub Actions
 
 ## Deployed resources
 

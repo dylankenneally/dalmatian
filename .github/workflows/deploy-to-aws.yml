@@ -1,0 +1,35 @@
+name: Deploy to AWS
+
+on:
+  push:
+    # todo: push to master should deploy to dev, push to staging should deploy to stg & push to production should push to prd
+    # for now, just deploy on push
+    # branches:
+    #   - master
+    #   - staging
+    #   - production
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      - name: Setup AWS SAM CLI
+        uses: aws-actions/setup-sam@v2
+        with:
+          use-installer: true
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: us-east-2
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Prepare (build) the deployment package
+        run: sam build --use-container
+
+      - name: Deploy to AWS with SAM
+        run: sam deploy
