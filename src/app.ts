@@ -1,5 +1,5 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
-import { name, description, version } from '../package.json';
+import { name, description, version } from './package.json';
 
 /**
  *
