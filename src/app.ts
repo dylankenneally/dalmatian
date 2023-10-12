@@ -1,4 +1,5 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
+import { name, description, version } from '../package.json';
 
 /**
  *
@@ -16,6 +17,9 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
             statusCode: 200,
             body: JSON.stringify({
                 message: 'hello world',
+                name,
+                version,
+                description,
             }),
         };
     } catch (err) {
